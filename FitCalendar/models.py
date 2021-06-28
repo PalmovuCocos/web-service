@@ -5,12 +5,14 @@ class exercise (models.Model):
     descriptions=models.TextField(max_length=280)
     group_muscle =models.CharField(max_length=30)
     photo=models.ImageField(upload_to="photos/exercise")
-    
+    def __str__(self):
+        return self.name
 class vitamins(models.Model):
     name=models.CharField(max_length=30)
     role=models.TextField(max_length=280)
     disadvantage=models.TextField(max_length=280)
-
+    def __str__(self):
+        return self.name
 class food(models.Model):
     name=models.CharField(max_length=30)
     descriptions=models.TextField()
@@ -18,7 +20,8 @@ class food(models.Model):
     proteins=models.IntegerField()
     carbohydrates=models.IntegerField()
     photo=models.ImageField(upload_to="photos/food")
-
+    def __str__(self):
+        return self.name
 class users(models.Model):
     login=models.CharField(max_length=80)
     email=models.EmailField(max_length=80)
@@ -31,16 +34,17 @@ class users(models.Model):
     proteins=models.IntegerField(blank=True)
     carbohydrates=models.IntegerField(blank=True)
     sex=models.CharField(max_length=1)
-
+    def __str__(self):
+        return self.login
 class day(models.Model):
     id_user=models.ForeignKey(users,on_delete=models.CASCADE)
     date=models.DateField()
     day_of_week=models.CharField(max_length=30)
-
+    def __str__(self):
+        return self.date
 class food_vit(models.Model):
     id_food=models.ForeignKey(food,on_delete=models.CASCADE)
     id_vitamins=models.ForeignKey(vitamins,on_delete=models.CASCADE)
-   
 
 class basket_food(models.Model,):
     id_day=models.ForeignKey(day,on_delete=models.CASCADE)

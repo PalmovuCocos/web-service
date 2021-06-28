@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for p in exercise_list %}
+    {{p.name}}<br>
+    {{p.descriptions}}<br>
+    {{p.group_muscle}}<br>
+{% endblock %}
