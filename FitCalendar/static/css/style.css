@@ -27,4 +27,24 @@
   }
   .menu-main a, .menu-main a:visited {color: #9d999d;}
   .menu-main a.current, .menu-main a:hover{color: #feb386;}
-  .menu-main a:before,
+  .menu-main a:before
+
+  .img{
+    margin: 10px;
+    padding: 0;
+    position: relative;
+    width:640px;
+    height:640px;
+    background: #c2c2c2;
+    border: 1px solid #000;
+    border-radius:3px;
+}
+
+.img img{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    max-width:100%;
+    max-height: 100%;
+}

@@ -9,10 +9,15 @@
     <body>
         {%block mainmeny %}
         <ul class="menu-main">
-            <li><a href="#">Календарь</a></li>
-            <li><a href="#">Продукты</a></li>
-            <li><a href="#">Упражнения</a></li>
-            <li><a href="#">Профиль</a></li>
+            <li><a href="{% url 'home'%}">Календарь</a></li>
+            <li><a href="{% url 'product'%}">Продукты</a></li>
+            <li><a href="{% url 'exercises'%}">Упражнения</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'profile'%}">{{user.username}}</a></li>
+            <li>  <a href="{% url 'logout' %}">Выйти</a></li>
+            {% else %}
+            <li><a href="{% url 'check_in' %}">Регистрация</a>|<a href="{% url 'authorization'%}">Вход</a></li>
+            {% endif %}
             </ul>
         {% endblock mainmeny %}
 

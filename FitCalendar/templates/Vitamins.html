@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'new_vitamins'%}">Добавить новый витамин</a>
+    {% for p in object_list %}
+       <h3>{{p.name}}</h3>
+       <h3>Роль витамина:</h3>
+        <p>{{p.role}}</p>
+        <h3>Симптомы при недостатке:</h3>
+        <p>{{p.disadvantage}}</p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

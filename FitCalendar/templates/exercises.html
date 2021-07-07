@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
+<a href="{% url 'new_exercises' %}">Добавить новое упражнение</a>
+    {% for p in object_list %}
+       <h3>{{p.name}}</h3>
+       {% if p.photo %}
+       <div class="img"><img class="izobr"  width="700px" height="640px" src="{{p.photo.url}}"></div>
+        {% endif %}
+        <p>{{p.descriptions}}</p>
+        <p>{{p.group_muscle}}</p>
+        <a href='#'>Добавить в корзину упражнений</a>
+        <hr>
+    {% endfor %}
 
-{% for p in exercise_list %}
-    {{p.name}}<br>
-    {{p.descriptions}}<br>
-    {{p.group_muscle}}<br>
 {% endblock %}
