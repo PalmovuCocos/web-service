@@ -17,7 +17,7 @@ def index(request):
 
 
 class product(ListView):#вывод страницы о еде 
-    model=food  
+    model=Food
     template_name='product.html'
     extra_context={'title':'Продукты'}
 
@@ -52,7 +52,7 @@ def new_product(request):# вывод страницы с формой на до
 #     context_object_name='form_new_product'
 
 class Vitamins(ListView):#вывод страницы с витаминами 
-    model=vitamins
+    model=Vitamins
     template_name='Vitamins.html'
     extra_context={'title':'Витамины'}
 
@@ -71,11 +71,11 @@ def new_vitamin(request):# вывод страницы с формой на до
     return render(request,'new_vitamins.html',{'form_new_vitamin':form_new_vitamin,'title':'Добавление нового витамина'})
 
 def exercises(request):# вывод страницы с упражнениями 
-    exercise_list=exercise.objects.all()
+    exercise_list=Exercise.objects.all()
     return render(request,'exercises.html',{'exercise_list':exercise_list,'title':'Упражнения'})
 
 class exercises(ListView):#вывод страницы с витаминами 
-    model=exercise
+    model=Exercise
     template_name='exercises.html'
     extra_context={'title':'Упражнения'}
 

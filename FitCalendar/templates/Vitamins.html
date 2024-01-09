@@ -4,9 +4,9 @@
     {% for p in object_list %}
        <h3>{{p.name}}</h3>
        <h3>Роль витамина:</h3>
-        <p>{{p.role}}</p>
+        <p>{{p.role|safe}}</p>
         <h3>Симптомы при недостатке:</h3>
-        <p>{{p.disadvantage}}</p>
+        <p>{{p.disadvantage|safe}}</p>
         <hr>
     {% endfor %}
 

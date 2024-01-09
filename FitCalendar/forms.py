@@ -24,12 +24,13 @@ from django.contrib.auth.forms import UserCreationForm
     
 
 class CheckUserForm(forms.Form):
-    login=forms.CharField(max_length=80, label='Логин')
-    password=forms.CharField(max_length=30, label='Пароль')
+    login = forms.CharField(max_length=80, label='Логин')
+    password = forms.CharField(max_length=30, label='Пароль')
+
 
 class AddProduct(forms.ModelForm):
     class Meta:
-        model=food
+        model=Food
         fields=['name','descriptions','fats','proteins','carbohydrates','photo']
         widgets={
             'descriptions': forms.Textarea(attrs={'cols':60,'rows':10})
@@ -37,12 +38,12 @@ class AddProduct(forms.ModelForm):
 
 class AddVitamin(forms.ModelForm):
     class Meta:
-        model=vitamins
+        model=Vitamins
         fields=['name','role','disadvantage']
 
 class AddExercises(forms.ModelForm):
     class Meta:
-        model=exercise
+        model=Exercise
         fields=['name','descriptions','group_muscle','photo']
         widgets={
             'descriptions': forms.Textarea(attrs={'cols':60,'rows':10})
