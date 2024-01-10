@@ -2,7 +2,7 @@ from django.contrib.auth import logout
 from django.views.generic.dates import DateMixin
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from FitCalendar.forms import *
-from django.http.response import HttpResponseNotFound, HttpResponseRedirect
+from django.http.response import HttpResponseNotFound, HttpResponseRedirect, HttpResponse
 from django.shortcuts import redirect, render
 from django.http import HttpResponseNotFound#,HttpResponse
 from django.urls import reverse_lazy
@@ -132,10 +132,16 @@ class authorization(DateMixin, LoginView):
 #     else:
 #         form_new_exercises=AddExercises()    
 #     return render(request,'add_profile.html',{'form_new_profile':form_new_profile,'title':'Добавление нового профиля'})
- 
+
+
 def logout_user(request):
     logout(request)
     return redirect('authorization')
 
+
 def pageNotFound(request,exception): 
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
+
+
+def test_view(request, cat_id):
+    return HttpResponse(f"<h1>aaa</h1>{cat_id}")
