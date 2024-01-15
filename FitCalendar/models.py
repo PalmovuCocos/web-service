@@ -30,7 +30,7 @@ class Vitamins(models.Model):
 
 class Food(models.Model):
     name = models.CharField(max_length=30, verbose_name='Название')
-    vitamins = models.ForeignKey(Vitamins, on_delete=models.PROTECT)
+    vitamins = models.ManyToManyField(Vitamins, through="VitaminsInFood")
     descriptions = models.TextField(verbose_name='Описание')
     fats = models.IntegerField(verbose_name='Жиры')
     proteins = models.IntegerField(verbose_name='Белки')
@@ -70,22 +70,22 @@ class Users(models.Model):
         verbose_name_plural = 'Пользователи'
 
 
-class BasketFood(models.Model):
+class Basket(models.Model):
+    day = models.DateField(verbose_name='day')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class BasketFood(Basket):
     food = models.ForeignKey(Food, on_delete=models.CASCADE,
                              verbose_name='food')
-    user = models.ForeignKey(User, on_delete=models.CASCADE,
-                             verbose_name='user')
-    day = models.DateField(verbose_name='day')
     food_weight = models.IntegerField(verbose_name='Вес еды: ')
 
     class Meta:
         verbose_name_plural = 'Корзина еды'
 
 
-class BasketExercise(models.Model):
+class BasketExercise(Basket):
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
-    day = models.DateField(verbose_name='day')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = 'Корзина упражнений'

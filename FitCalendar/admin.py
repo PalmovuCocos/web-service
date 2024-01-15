@@ -18,7 +18,7 @@ class VitaminsAdmin(admin.ModelAdmin):
 
 @admin.register(Food)
 class FoodAdmin(admin.ModelAdmin):
-    list_display = ('name', 'vitamins', 'descriptions', 'fats', 'proteins',
+    list_display = ('name', 'descriptions', 'fats', 'proteins',
                     'carbohydrates', 'photo')
     #list_display_links=('id','name')
     #search_fields=('name')
