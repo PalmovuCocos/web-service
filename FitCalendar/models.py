@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 
 class Exercise (models.Model):
@@ -36,7 +34,7 @@ class Food(models.Model):
     fats = models.IntegerField(verbose_name='Жиры: ')
     proteins = models.IntegerField(verbose_name='Белки: ')
     carbohydrates = models.IntegerField(verbose_name='Углеводы: ')
-    photo = models.ImageField(upload_to="photos/food",verbose_name='Фото: ')
+    photo = models.ImageField(upload_to="photos/food", verbose_name='Фото: ')
 
     def __str__(self):
         return self.name
@@ -45,23 +43,16 @@ class Food(models.Model):
         verbose_name_plural = 'Еда'
 
 
-# class food_vit(models.Model):
-#     id_food = models.ForeignKey(food, on_delete=models.CASCADE)
-#     id_vitamins = models.ForeignKey(vitamins, on_delete=models.CASCADE)
-#
-#     class Meta:
-#         verbose_name_plural = 'Витамины в еде'
-
 class Users(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     weight = models.IntegerField(blank=True)
     height = models.IntegerField(blank=True)
     type_body = models.CharField(max_length=30, blank=True)
-    target = models.CharField(blank=True,max_length=30)
+    target = models.CharField(blank=True, max_length=30)
     fats = models.IntegerField(blank=True)
     proteins = models.IntegerField(blank=True)
     carbohydrates = models.IntegerField(blank=True)
-    sex = models.CharField(max_length=1,blank=True)
+    sex = models.CharField(max_length=1, blank=True)
 
     def __str__(self):
         return self.login
@@ -79,7 +70,7 @@ class Day(models.Model):
         return self.date
 
     class Meta:
-        verbose_name_plural='Дни'
+        verbose_name_plural = 'Дни'
 
 
 class BasketFood(models.Model, ):
