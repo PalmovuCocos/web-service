@@ -7,7 +7,7 @@ class Exercise (models.Model):
     descriptions = models.TextField(max_length=280, verbose_name='Описание')
     group_muscle = models.CharField(max_length=30, verbose_name='Группа мышц')
     photo = models.ImageField(upload_to="photos/exercise",
-                              verbose_name='Фото: ')
+                              verbose_name='Фото')
 
     def __str__(self):
         return self.name
@@ -42,6 +42,14 @@ class Food(models.Model):
 
     class Meta:
         verbose_name_plural = 'Еда'
+
+
+class VitaminsInFood(models.Model):
+    vitamins = models.ForeignKey(Vitamins, on_delete=models.PROTECT,
+                                 verbose_name='витамины')
+    food = models.ForeignKey(Food, on_delete=models.PROTECT,
+                             verbose_name='еда')
+    quantity = models.IntegerField(blank=True, verbose_name='Количество')
 
 
 class Users(models.Model):
