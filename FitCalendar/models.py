@@ -7,7 +7,7 @@ class Exercise (models.Model):
     descriptions = models.TextField(max_length=280, verbose_name='Описание')
     group_muscle = models.CharField(max_length=30, verbose_name='Группа мышц')
     photo = models.ImageField(upload_to="photos/exercise",
-                              verbose_name='Фото')
+                              verbose_name='Фото', blank=True)
 
     def __str__(self):
         return self.name
@@ -35,7 +35,8 @@ class Food(models.Model):
     fats = models.IntegerField(verbose_name='Жиры')
     proteins = models.IntegerField(verbose_name='Белки')
     carbohydrates = models.IntegerField(verbose_name='Углеводы')
-    photo = models.ImageField(upload_to="photos/food", verbose_name='Фото')
+    photo = models.ImageField(upload_to="photos/food", blank=True,
+                              verbose_name='Фото')
 
     def __str__(self):
         return self.name
@@ -89,7 +90,3 @@ class BasketExercise(Basket):
 
     class Meta:
         verbose_name_plural = 'Корзина упражнений'
-
-
-
-
