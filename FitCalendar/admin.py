@@ -30,17 +30,10 @@ class UsersAdmin(admin.ModelAdmin):
     # search_fields=('login','email')
 
 
-@admin.register(Day)
-class DayAdmin(admin.ModelAdmin):
-    list_display = '__all__'
-    # list_display_links=('id','date')
-    # search_fields=('date','day_of_week')
-
-
 @admin.register(BasketFood)
 class BasketFoodAdmin(admin.ModelAdmin):
-    list_display=('id','id_day','id_food_vit','id_food','id_vitamins','id_user','food_weight')
-    list_display_links=('id','id_day')
+    list_display= ('id', 'id_day', 'id_food_vit', 'id_food', 'id_vitamins', 'id_user', 'food_weight')
+    list_display_links = ('id', 'id_day')
 
 
 @admin.register(BasketExercise)
