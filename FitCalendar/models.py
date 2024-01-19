@@ -75,6 +75,9 @@ class Basket(models.Model):
     day = models.DateField(verbose_name='day')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+        abstract = True
+
 
 class BasketFood(Basket):
     food = models.ForeignKey(Food, on_delete=models.CASCADE,
